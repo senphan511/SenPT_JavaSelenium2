@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
     WebDriver driver;
-    //element locators of the web elements on this page
     private By userNameTextBox = By.id("username");
     private By passwordTextBox = By.id("password");
     private By loginButton = By.id("login");
