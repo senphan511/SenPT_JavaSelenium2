@@ -1,7 +1,7 @@
 import driver.DriverManager;
 import driver.DriverManagerFactory;
 import driver.DriverType;
-import objects.LoginPage;
+import pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
