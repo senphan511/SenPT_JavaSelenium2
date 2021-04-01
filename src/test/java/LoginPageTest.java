@@ -1,3 +1,4 @@
+import cucumber.api.CucumberOptions;
 import driver.DriverManager;
 import driver.DriverManagerFactory;
 import driver.DriverType;
@@ -6,21 +7,19 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class LoginPageTest {
-    DriverManager driverManager;
+@CucumberOptions = (features = {""},
+        plugin = {""})
+public class LoginPageTest extends TestNGCucumberTests{
+  /*  DriverManager driverManager;
     WebDriver driver;
-    LoginPage loginPage;
+    LoginPage loginPage;*/
 
-    @BeforeClass
-    public void setUp() {
-        driverManager = DriverManagerFactory.getDriverManager((DriverType.CHROME));
-        driver.get("");
+    LoginPage loginPage = new LoginPage();
+
+    @BeforeClass(alwaysRun = true)
+    public void setup() {
+        loginPage.open();
+        loginPage.login(user.getUserName(), user.getPassword());
     }
 
-    @Test
-    public void loginTest() {
-        loginPage = new LoginPage(driver);
-        loginPage.login("", "");
-        //assertEquals(loginPage.getLoginErrorMessage(), "");
-    }
 }

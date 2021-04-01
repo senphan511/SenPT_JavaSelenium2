@@ -1,7 +1,7 @@
 Feature: Login
 
     Background:
-        Given user on the homepage
+        Given I'm navigating to RailWay website
         And user follows "Sign in"
 
         Scenario: Create a New User
