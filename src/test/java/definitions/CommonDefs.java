@@ -7,8 +7,8 @@ public class CommonDefs implements En {
     HomePage homePage = new HomePage();
 
     public CommonDefs(){
-        Given("I'm navigating to RailWay website",{
-            homePage.open();
+        Given("I am navigating to RailWay website",{
+
         });
 
         When("I click on {String} tab"), (String page) ->{

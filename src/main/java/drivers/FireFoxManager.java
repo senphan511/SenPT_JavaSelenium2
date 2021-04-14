@@ -1,4 +1,4 @@
-package driver;
+package drivers;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;

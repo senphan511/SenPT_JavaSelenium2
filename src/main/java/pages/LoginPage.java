@@ -1,34 +1,48 @@
-package pages;
+package Railway;
 
+import Constant.Constant;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
-public class LoginPage {
-    WebDriver driver;
+public class LoginPage extends GeneralPage {
     private By userNameTextBox = By.xpath("//input[@id='username']");
     private By passwordTextBox = By.xpath("//input[@id='password']");
     private By loginButton = By.xpath("//input[@value='Login'])");
+    private By lblLoginErrorMsg = By.xpath("//p[@class = 'message error LoginForm']");
+    private By lblHeaderLoginPage = By.xpath("//div[@id='content']/h1");
 
-    //contructor of this Page Object
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
+    public WebElement getTxtUserName()
+    {
+        return Constant.WEBDRIVER.findElement(userNameTextBox);
     }
 
-    public void login(String username, String password) {
-        this.setUserName(username);
-        this.setPassword(password);
-        this.clickLogin();
+    public WebElement getTxtPassword()
+    {
+        return Constant.WEBDRIVER.findElement(passwordTextBox);
     }
 
-    public void setUserName(String userName) {
-        driver.findElement(userNameTextBox).sendKeys(userName);
+    public WebElement getBtnLogin() { return Constant.WEBDRIVER.findElement(loginButton); }
+
+    public WebElement getlblLoginErrorMsg()
+    {
+        return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
     }
 
-    public void setPassword(String password) {
-        driver.findElement(passwordTextBox).sendKeys(password);
+    public WebElement getlblHeaderLoginPage()
+    {
+        return Constant.WEBDRIVER.findElement(lblHeaderLoginPage);
     }
 
-    public void clickLogin() {
-        driver.findElement(loginButton).click();
+    public HomePage login(String username, String password)
+    {
+        JavascriptExecutor jse = (JavascriptExecutor) Constant.WEBDRIVER;
+        jse.executeScript("window.scrollTo(0,document.body.scrollHeight);");
+
+        this.getTxtUserName().sendKeys(username);
+        this.getTxtPassword().sendKeys(password);
+        this.getBtnLogin().click();
+
+        return new HomePage();
     }
 }
