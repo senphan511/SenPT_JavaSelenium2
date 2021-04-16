@@ -1,20 +1,25 @@
 package definitions;
 
+import common.Constants;
+import drivers.DriverManager;
 import io.cucumber.java8.En;
-import pages.HomePage;
+import org.testng.Assert;
+import pages.GeneralPage;
+import pages.LoginPage;
 
 public class CommonDefs implements En {
-    HomePage homePage = new HomePage();
-
+            GeneralPage generalPage = new GeneralPage();
     public CommonDefs(){
-        Given("I am navigating to RailWay website",{
-
+        Given("I'm on login page", () -> {
+            DriverManager.navigateToUrl(Constants.RAILWAY_URL);
         });
 
-        When("I click on {String} tab"), (String page) ->{
+        When("I get logged in with account from {string} with {string}",(String username, String password) -> {
+            LoginPage.login(username, password);
         });
 
-        When("I enter username and password", {
-        })
+        Then ("System should display Welcome message as {string}", (String text) -> {
+            Assert.assertEquals(generalPage.getlblWelcomeMessage(),text,"Login failed");
+        });
     }
 }

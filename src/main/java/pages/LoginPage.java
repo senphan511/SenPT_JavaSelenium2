@@ -1,48 +1,46 @@
-package Railway;
+package pages;
 
-import Constant.Constant;
+import common.Constants;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends GeneralPage {
-    private By userNameTextBox = By.xpath("//input[@id='username']");
-    private By passwordTextBox = By.xpath("//input[@id='password']");
-    private By loginButton = By.xpath("//input[@value='Login'])");
-    private By lblLoginErrorMsg = By.xpath("//p[@class = 'message error LoginForm']");
-    private By lblHeaderLoginPage = By.xpath("//div[@id='content']/h1");
+    private static By userNameTextBox = By.xpath("//input[@id='username']");
+    private static By passwordTextBox = By.xpath("//input[@id='password']");
+    private static By loginButton = By.xpath("//input[@value='Login'])");
+    private static By lblLoginErrorMsg = By.xpath("//p[@class = 'message error LoginForm']");
+    private static By lblHeaderLoginPage = By.xpath("//div[@id='content']/h1");
 
-    public WebElement getTxtUserName()
+    public static WebElement getTxtUserName()
     {
-        return Constant.WEBDRIVER.findElement(userNameTextBox);
+        return Constants.WEBDRIVER.findElement(userNameTextBox);
     }
 
-    public WebElement getTxtPassword()
+    public static WebElement getTxtPassword()
     {
-        return Constant.WEBDRIVER.findElement(passwordTextBox);
+        return Constants.WEBDRIVER.findElement(passwordTextBox);
     }
 
-    public WebElement getBtnLogin() { return Constant.WEBDRIVER.findElement(loginButton); }
+    public static WebElement getBtnLogin() { return Constants.WEBDRIVER.findElement(loginButton); }
 
     public WebElement getlblLoginErrorMsg()
     {
-        return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
+        return Constants.WEBDRIVER.findElement(lblLoginErrorMsg);
     }
 
     public WebElement getlblHeaderLoginPage()
     {
-        return Constant.WEBDRIVER.findElement(lblHeaderLoginPage);
+        return Constants.WEBDRIVER.findElement(lblHeaderLoginPage);
     }
 
-    public HomePage login(String username, String password)
-    {
-        JavascriptExecutor jse = (JavascriptExecutor) Constant.WEBDRIVER;
-        jse.executeScript("window.scrollTo(0,document.body.scrollHeight);");
-
-        this.getTxtUserName().sendKeys(username);
-        this.getTxtPassword().sendKeys(password);
-        this.getBtnLogin().click();
-
-        return new HomePage();
+    public static void login(String username, String password){
+        getTxtUserName().sendKeys(username);
+        getTxtPassword().sendKeys(password);
+        getBtnLogin().click();
     }
+
+    public static void logout(){
+
+    }
+
 }
