@@ -5,11 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class GeneralPage {
-    protected WebElement getTablLogin(){
-        return Constants.WEBDRIVER.findElement(By.xpath("//a[@href = '/Account/Login.cshtml']"));
+    public void getTablLogin(){
+        Constants.WEBDRIVER.findElement(By.xpath("//a[@href = '/Account/Login.cshtml']"));
     }
-
-    protected WebElement getTabLogout(){
+    public WebElement getHeaderPage(){
+       return Constants.WEBDRIVER.findElement(By.xpath("//div/h1"));
+    }
+    public WebElement getTabLogout(){
         return Constants.WEBDRIVER.findElement(By.xpath("//a[@href= '/Account/Logout']"));
     }
 
@@ -17,62 +19,62 @@ public class GeneralPage {
         return Constants.WEBDRIVER.findElement(By.xpath("//div[@class='account']/strong"));
     }
 
-    protected WebElement getllblBlankUsernameMsg(){
+    public WebElement getllblBlankUsernameMsg(){
         return Constants.WEBDRIVER.findElement(By.xpath("//p[@class = 'message error LoginForm']"));
     }
 
-    protected WebElement getMsgPID(){
+    public WebElement getMsgPID(){
         return Constants.WEBDRIVER.findElement(By.xpath("//li[@class = 'pid-number']/label[@class = 'validation-error']"));
     }
 
-    protected WebElement getTabRegister(){
+    public WebElement getTabRegister(){
         return Constants.WEBDRIVER.findElement(By.xpath("//a[@href= '/Account/Register.cshtml']"));
     }
 
-    protected WebElement getlblregisterMessage(){
+    public WebElement getlblregisterMessage(){
         return Constants.WEBDRIVER.findElement(By.xpath("//div[@id = 'content']//p[@class = 'message error']"));
     }
 
-    protected WebElement getTabChangePassword(){
+    public WebElement getTabChangePassword(){
         return Constants.WEBDRIVER.findElement(By.xpath("//a[@href = '/Account/ChangePassword.cshtml']"));
     }
 
-    protected WebElement getlblMesPassRegister(){
+    public WebElement getlblMesPassRegister(){
         return Constants.WEBDRIVER.findElement(By.xpath("//li[@class = 'password']//label[@class= 'validation-error']"));
     }
 
-    protected  WebElement getTabBookTicket()
+    public  WebElement getTabBookTicket()
     {
         return Constants.WEBDRIVER.findElement(By.xpath("//a[@href='/Page/BookTicketPage.cshtml']"));
     }
 
-    protected WebElement gettabTimeTable()
+    public WebElement gettabTimeTable()
     {
         return Constants.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//a[@href= 'TrainTimeListPage.cshtml']"));
     }
 
-    protected WebElement gettabMyTicket()
+    public WebElement gettabMyTicket()
     {
         return Constants.WEBDRIVER.findElement(By.xpath("//a[@href = '/Page/ManageTicket.cshtml']"));
     }
 
-    protected WebElement getlblRegisterSucess(){
+    public WebElement getlblRegisterSucess(){
         return Constants.WEBDRIVER.findElement(By.xpath("//div[@id = 'content']"));
     }
 
-    protected WebElement getFormBookTicket(){
+    public WebElement getFormBookTicket(){
         return Constants.WEBDRIVER.findElement(By.xpath("//form[@method = 'post']"));
     }
 
-    protected WebElement getTabContact(){
+    public WebElement getTabContact(){
         return Constants.WEBDRIVER.findElement(By.xpath("//a[@href='/Page/Contact.cshtml']"));
     }
 
-    protected WebElement getlblHomeHeader(){
+    public WebElement getlblHomeHeader(){
         return Constants.WEBDRIVER.findElement(By.xpath("//div[@id='content']//h1"));
     }
 
-    protected WebElement getlblTextLogout(){
+    public WebElement getlblTextLogout(){
         return Constants.WEBDRIVER.findElement(By.xpath("//a[@href= '/Account/Logout']//span"));
     }
     //Methods

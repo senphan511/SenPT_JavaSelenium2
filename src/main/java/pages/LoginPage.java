@@ -10,6 +10,7 @@ public class LoginPage extends GeneralPage {
     private static By loginButton = By.xpath("//input[@value='Login'])");
     private static By lblLoginErrorMsg = By.xpath("//p[@class = 'message error LoginForm']");
     private static By lblHeaderLoginPage = By.xpath("//div[@id='content']/h1");
+    private static By lblHyperLinkRegistration = By.xpath("//div/div[@id = 'content']//a[@href='Register.cshtml']");
 
     public static WebElement getTxtUserName()
     {
@@ -33,6 +34,9 @@ public class LoginPage extends GeneralPage {
         return Constants.WEBDRIVER.findElement(lblHeaderLoginPage);
     }
 
+    public WebElement getHyperlink(){
+        return Constants.WEBDRIVER.findElement(lblHyperLinkRegistration);
+    }
     public static void login(String username, String password){
         getTxtUserName().sendKeys(username);
         getTxtPassword().sendKeys(password);
