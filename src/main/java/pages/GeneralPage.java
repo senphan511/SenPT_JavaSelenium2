@@ -5,8 +5,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class GeneralPage {
+    private static By tabHome = By.xpath("//div[@id='menu']//a[@href='../']") ;
+    private static By tabRegister = By.xpath("//div[@id='menu']//a[@href=\"/Account/Register.cshtml\"]");
+    private static By tabLogin = By.xpath("//div[@id='menu']//a[@href=\"/Account/Login.cshtml\"]");
+
     public void getTablLogin(){
-        Constants.WEBDRIVER.findElement(By.xpath("//a[@href = '/Account/Login.cshtml']"));
+        Constants.WEBDRIVER.findElement(By.xpath("//a[@href = '/Account/Login.cshtml']")).click();
+    }
+    public void clickTab(String tabName)
+    {
+        switch (tabName)
+        {
+            case "Register":
+                Constants.WEBDRIVER.findElement(tabRegister).click();
+            case "Login":
+                Constants.WEBDRIVER.findElement(tabLogin).click();
+            default:
+                Constants.WEBDRIVER.findElement(tabHome).click();
+        }
     }
     public WebElement getHeaderPage(){
        return Constants.WEBDRIVER.findElement(By.xpath("//div/h1"));
@@ -77,27 +93,5 @@ public class GeneralPage {
     public WebElement getlblTextLogout(){
         return Constants.WEBDRIVER.findElement(By.xpath("//a[@href= '/Account/Logout']//span"));
     }
-    //Methods
-    public String getRegisterSucess(){
-        return this.getlblRegisterSucess().getText();
-    }
-    public String getWelcomeMessage(){
-        return this.getlblWelcomeMessage().getText();
-    }
-    public String getMessageRegister(){
-        return this.getlblregisterMessage().getText();
-    }
-    public String getMesPassRgister(){
-        return this.getlblMesPassRegister().getText();
-    }
-    public String getTextLogoutTab() {return  this.getlblTextLogout().getText();}
-
-    public String getBlankUserNameMsg(){
-        return this.getllblBlankUsernameMsg().getText();
-    }
-    public String getMsgPid(){
-        return this.getMsgPID().getText();
-    }
-    public String getHomePageHeader(){ return  this.getlblHomeHeader().getText();}
 
 }

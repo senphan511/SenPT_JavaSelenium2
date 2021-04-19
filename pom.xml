@@ -80,6 +80,11 @@
             <version>1.18.10</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.opencensus</groupId>
+            <artifactId>opencensus-api</artifactId>
+            <version>0.24.0</version>
+        </dependency>
     </dependencies>
 
 

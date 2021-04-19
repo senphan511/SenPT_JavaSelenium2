@@ -6,7 +6,7 @@ import pages.LoginPage;
 public class LoginDefs implements En {
     LoginPage loginPage = new LoginPage();
     public LoginDefs(){
-        When("I click on hyperlink {String}", (String link) -> {
+        When("^I click on hyperlink \"([^\"]*)\"$", (String link) -> {
             loginPage.getHyperlink();
         });
     }
