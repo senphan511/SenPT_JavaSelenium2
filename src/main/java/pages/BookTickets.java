@@ -3,41 +3,53 @@ import common.Constants;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.List;
+
 public class BookTickets extends GeneralPage{
-    public WebElement getDepartDate() {
-        return Constants.WEBDRIVER.findElement(By.xpath("//select[@name = 'Date']"));
+    private By getDepartStation = By.xpath("//table//tr[@class='OddRow']//td[count(//table/tbody/tr/th[.=\"Depart Station\"]/preceding-sibling::th)+1]");
+    private By getarriveStation = By.xpath("//table//tr[@class='OddRow']//td[count(//table/tbody/tr/th[.=\"Arrive Station\"]/preceding-sibling::th)+1]");
+    private By getSeatType = By.xpath("//table//tr[@class='OddRow']//td[count(//table/tbody/tr/th[.=\"Seat Type\"]/preceding-sibling::th)+1]");
+    private By getDepartureDate = By.xpath("//table//tr[@class='OddRow']//td[count(//table/tbody/tr/th[.=\"Depart Date\"]/preceding-sibling::th)+1]");
+    private By getBookDate = By.xpath("//table//tr[@class='OddRow']//td[count(//table/tbody/tr/th[.=\"Book Date\"]/preceding-sibling::th)+1]");
+    private By getAmount = By.xpath("//table//tr[@class='OddRow']//td[count(//table/tbody/tr/th[.=\"Amount\"]/preceding-sibling::th)+1]");
+    private By dateCbx = By.xpath("//select[@name = 'Date']");
+    private By departureStationCbx = By.xpath("//select[@name = 'DepartStation']");
+    private By arriveStationCbx = By.xpath("//select[@name = 'ArriveStation']");
+    private By setTypeCbb = By.xpath("//select[@name = 'SeatType']");
+    private By ticketAmountTxt = By.xpath("//select[@name = 'TicketAmount']");
+    private By bookTicketBtn = By.xpath("//input[@value = 'Book ticket']");
+
+    public WebElement getDepartDateCbb() {
+        return Constants.WEBDRIVER.findElement(dateCbx);
+    }
+    public WebElement getDepartFromCbb() {
+        return Constants.WEBDRIVER.findElement(departureStationCbx);
     }
 
-    public WebElement getDepartFrom() {
-        return Constants.WEBDRIVER.findElement(By.xpath("//select[@name = 'DepartStation']"));
+    public WebElement getArriveAtCbb() {
+        return Constants.WEBDRIVER.findElement(arriveStationCbx);
     }
 
-    public WebElement getArriveAt() {
-        return Constants.WEBDRIVER.findElement(By.xpath("//select[@name = 'ArriveStation']"));
+    public WebElement getSeatTypeCbb() {
+        return Constants.WEBDRIVER.findElement(setTypeCbb);
     }
 
-    public WebElement getSeatType() {
-        return Constants.WEBDRIVER.findElement(By.xpath("//select[@name = 'SeatType']"));
-    }
-
-    public WebElement getTicketAmount() {
-        return Constants.WEBDRIVER.findElement(By.xpath("//select[@name = 'TicketAmount']"));
+    public WebElement getTicketAmountTxt() {
+        return Constants.WEBDRIVER.findElement(ticketAmountTxt);
     }
 
     public WebElement getBtnBookTicket() {
-        return Constants.WEBDRIVER.findElement(By.xpath("//input[@value = 'Book ticket']"));
-    }
-
-    public WebElement getlblMesBookTicket() {
-        return Constants.WEBDRIVER.findElement(By.xpath("//div[@id = 'content']/h1"));
+        return Constants.WEBDRIVER.findElement(bookTicketBtn);
     }
 
     public void bookTicket(String departDate, String departFrom, String arriveAt, String seatType, String ticketAmount) {
-        this.getDepartDate().sendKeys(departDate);
-        this.getDepartFrom().sendKeys(departFrom);
-        this.getArriveAt().sendKeys(arriveAt);
-        this.getSeatType().sendKeys(seatType);
-        this.getTicketAmount().sendKeys(ticketAmount);
+        this.getDepartDateCbb().sendKeys(departDate);
+        this.getDepartFromCbb().sendKeys(departFrom);
+        this.getArriveAtCbb().sendKeys(arriveAt);
+        this.getSeatTypeCbb().sendKeys(seatType);
+        this.getTicketAmountTxt().sendKeys(ticketAmount);
 
         try {
             Thread.sleep(1000);
@@ -45,5 +57,24 @@ public class BookTickets extends GeneralPage{
             e.printStackTrace();
         }
         this.getBtnBookTicket().click();
+    }
+    public List<String> getBookedTickets(){
+        List<String> bookedTicketsList = new ArrayList<>();
+        bookedTicketsList.add(getDepartStation.toString());
+        bookedTicketsList.add(getarriveStation.toString());
+        bookedTicketsList.add(getSeatType.toString());
+        bookedTicketsList.add(getDepartureDate.toString());
+        bookedTicketsList.add(getBookDate.toString());
+        bookedTicketsList.add(getAmount.toString());
+        return  bookedTicketsList;
+    }
+    public List<String> getTickets(){
+        List<String> ticketsList = new ArrayList<>();
+        ticketsList.add(getDepartDateCbb().toString());
+        ticketsList.add(getArriveAtCbb().toString());
+        ticketsList.add(getSeatTypeCbb().toString());
+        ticketsList.add(getDepartDateCbb().toString());
+        ticketsList.add(getTicketAmountTxt().toString());
+        return  ticketsList;
     }
 }

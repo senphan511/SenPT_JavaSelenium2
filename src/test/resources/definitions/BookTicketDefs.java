@@ -1,6 +1,7 @@
 package definitions;
 
 import io.cucumber.java8.En;
+import org.testng.Assert;
 import pages.BookTickets;
 
 public class BookTicketDefs implements En {
@@ -10,5 +11,9 @@ public class BookTicketDefs implements En {
                 (String ticketNumber, String depatureForm, String arriveAt, String seatType) -> {
 
         });
+        Then("System should display tickets booked",() ->{
+            Assert.assertEquals(bookTickets.getTickets(),bookTickets.getBookedTickets(),"Don't match");
+        });
+
     }
 }

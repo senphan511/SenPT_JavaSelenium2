@@ -25,3 +25,4 @@ Feature: Book Ticket
     Examples:
       | label                       |
       | Ticket booked successfully! |
+    Then System should display tickets booked
