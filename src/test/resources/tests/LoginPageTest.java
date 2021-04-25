@@ -1,11 +1,11 @@
+package tests;
+
 import cucumber.api.CucumberOptions;
 import driver.DriverManager;
 import driver.DriverManagerFactory;
 import driver.DriverType;
 import pages.LoginPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 @CucumberOptions = (features = {""},
         plugin = {""})

@@ -1,6 +1,5 @@
 package definitions;
 
-import com.sun.xml.internal.ws.util.ReadAllStream;
 import common.Constants;
 import drivers.DriverManager;
 import io.cucumber.java8.En;
